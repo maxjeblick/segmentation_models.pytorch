@@ -6,10 +6,10 @@ import torch.nn as nn
 class PixelShuffleUpsample(nn.Module):
     "Upsample by `scale` from `ni` filters to `nf` (default `ni`), using `nn.PixelShuffle`, `icnr` init, and `weight_norm`."
 
-    def __init__(self, in_channels: int, intermediate_channels: int, scale: int = 2, blur: bool = False):
+    def __init__(self, in_channels: int, scale: int = 2, blur: bool = False):
         super().__init__()
         self.conv = nn.Conv2d(in_channels=in_channels,
-                              out_channels=intermediate_channels,
+                              out_channels=4 * in_channels,
                               kernel_size=(3, 3),
                               stride=1,
                               padding=(1, 1))
@@ -32,8 +32,8 @@ class PixelShuffleUpsample(nn.Module):
 
 
 if __name__ == '__main__':
-    x = torch.rand((1, 32, 64, 64))
+    x = torch.rand((1, 128, 64, 64))
     print(x.shape)
 
-    upsampler = PixelShuffleUpsample(in_channels=32, intermediate_channels=128)
+    upsampler = PixelShuffleUpsample(in_channels=128, blur=True)
     print(upsampler(x).shape)
