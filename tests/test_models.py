@@ -21,8 +21,10 @@ def get_encoder():
 
     return encoders
 
+
 def get_pretrained_weights_name(encoder_name):
     return list(smp.encoders.encoders[encoder_name]['pretrained_settings'].keys())[0]
+
 
 ENCODERS = get_encoder()
 
@@ -36,7 +38,6 @@ def _select_names(names, k=2):
 
 
 def _test_forward_backward(model_fn, encoder_name):
-
     model = model_fn(encoder_name, encoder_weights=None)
 
     x = torch.ones((1, 3, 64, 64))
