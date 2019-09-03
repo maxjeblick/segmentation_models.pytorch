@@ -10,7 +10,7 @@ class PixelShuffleUpsample(nn.Module):
         super().__init__()
         self.conv = nn.Conv2d(in_channels=in_channels,
                               out_channels=out_channels,
-                              kernel_size=(3,3),
+                              kernel_size=(3, 3),
                               stride=1,
                               padding=(1, 1))
         self.pixel_shuffle = nn.PixelShuffle(scale)
@@ -29,6 +29,7 @@ class PixelShuffleUpsample(nn.Module):
             x = self.pad(x)
             x = self.avg_pool(x)
         return x
+
 
 if __name__ == '__main__':
     x = torch.rand((1, 32, 64, 64))
