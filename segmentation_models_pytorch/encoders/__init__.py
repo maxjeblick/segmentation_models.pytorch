@@ -1,6 +1,7 @@
 import functools
 import torch.utils.model_zoo as model_zoo
 
+from segmentation_models_pytorch.encoders.efficient_net_encoder import efficientnet_encoders
 from .resnet import resnet_encoders
 from .dpn import dpn_encoders
 from .vgg import vgg_encoders
@@ -17,6 +18,7 @@ encoders.update(vgg_encoders)
 encoders.update(senet_encoders)
 encoders.update(densenet_encoders)
 encoders.update(inception_encoders)
+encoders.update(efficientnet_encoders)
 
 
 def get_encoder(name, encoder_weights=None):
@@ -40,7 +42,7 @@ def get_preprocessing_params(encoder_name, pretrained='imagenet'):
 
     if pretrained not in settings.keys():
         raise ValueError('Avaliable pretrained options {}'.format(settings.keys()))
-    
+
     formatted_settings = {}
     formatted_settings['input_space'] = settings[pretrained].get('input_space')
     formatted_settings['input_range'] = settings[pretrained].get('input_range')

@@ -46,7 +46,7 @@ if __name__ == '__main__':
 """
 0: torch.Size([11, 16, 128, 128]),  <-
 torch.Size([11, 24, 64, 64]),
-2: torch.Size([11, 24, 64, 64]),
+2: torch.Size([11, 24, 64, 64]), <-
 torch.Size([11, 40, 32, 32]), 
 4: torch.Size([11, 40, 32, 32]),   <-
 torch.Size([11, 80, 16, 16]), 
@@ -61,3 +61,12 @@ torch.Size([11, 192, 8, 8]),
 torch.Size([11, 192, 8, 8]), 
 -1: torch.Size([11, 320, 8, 8])   <-
 """
+
+efficientnet_encoders = {
+    'efficientnet-b0': {
+        'encoder': EfficientNetEncoder,
+        'pretrained_settings': {'imagenet': {}},
+        'out_shapes': (320, 112, 40, 24, 16),
+        'params': dict()  # these are called by instantiation of EfficientNetEncoder
+    }
+}
