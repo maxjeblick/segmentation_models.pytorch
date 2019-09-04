@@ -1,7 +1,7 @@
 import functools
 import torch.utils.model_zoo as model_zoo
 
-from segmentation_models_pytorch.encoders.efficient_net_encoder import efficientnet_encoders
+from segmentation_models_pytorch.encoders.efficient_net import efficientnet_encoders
 from .resnet import resnet_encoders
 from .dpn import dpn_encoders
 from .vgg import vgg_encoders
