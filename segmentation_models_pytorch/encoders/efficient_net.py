@@ -66,7 +66,7 @@ efficientnet_encoders = {
         'encoder': EfficientNetEncoder,
         'pretrained_settings': {'imagenet': {}},
         'out_shapes': (352, 120, 48, 24, 16),
-        'params': {'model_name': 'efficientnet-b1'}  # these are called by instantiation of EfficientNetEncoder
+        'params': {'model_name': 'efficientnet-b2'}  # these are called by instantiation of EfficientNetEncoder
     },
     'efficientnet-b3': {
         'encoder': EfficientNetEncoder,
